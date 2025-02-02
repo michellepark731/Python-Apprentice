@@ -9,7 +9,7 @@ def onclick(args):
 
     # TODO 2) Change the value of opponent_selection to be a random number between 1 and 3
     opponent_selection = 1
-    opponent_selection = random.randint(1,3)
+    opponent_selection = random.randint(1, 1)
     # TODO 3) Run the program again. Is the result different?
 
     selection = 1
@@ -19,15 +19,15 @@ def onclick(args):
     elif args == "SCISSORS":
         selection = 3
 
-    messagebox.showinfo(None, "You chose: " + str(args) + ".\n"
-                        + "The computer chose: " + opp_select(opponent_selection) + ".\n")
+    messagebox.showinfo(None, "You chose: " + str(args) + ".\n")
++ "The computer chose": " + opp_select(opponent_selection) + ".\n")
 
-    if selection == opponent_selection:
+if selection == opponent_selection:
         messagebox.showinfo(None, "No Winner. Play Again.")
-    elif (selection == 1 and opponent_selection == 3) or (selection == 2 and opponent_selection == 1) or (
+elif (selection == 1 and opponent_selection == 3) or (selection == 2 and opponent_selection == 1) or (
             selection == 3 and opponent_selection == 2):
         messagebox.showinfo(None, "You Win!")
-    else:
+else:
         messagebox.showinfo(None, "You Lose!")
 
 
@@ -48,9 +48,9 @@ window.configure(background="grey")
 
 Label(window, text="Choose Your Weapon!", bg="grey").pack(side="left")
 
-img_rock = ImageTk.PhotoImage(file="rock.png")
-img_paper = ImageTk.PhotoImage(file="paper.jpeg")
-img_scissors = ImageTk.PhotoImage(file="scissors.jpeg")
+img_rock = ImageTk.PhotoImage(file="lessons/rock.png")
+img_paper = ImageTk.PhotoImage(file="lessons/paper.png")
+img_scissors = ImageTk.PhotoImage(file="lessons/scissors.png")
 
 Button(window, image=img_rock, command=lambda: onclick("ROCK")).pack(side="left")
 Button(window, image=img_paper, command=lambda: onclick("PAPER")).pack(side="left")

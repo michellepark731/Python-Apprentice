@@ -34,12 +34,12 @@ def onclick(args):
 window = Tk()
 window.title("Roll the Dice!")
 
-dice1 = ImageTk.PhotoImage(file="dice 1.png")
-dice2 = ImageTk.PhotoImage(file="dice 2.png")
-dice3 = ImageTk.PhotoImage(file="dice 3.png")
-dice4 = ImageTk.PhotoImage(file="dice 4.png")
-dice5 = ImageTk.PhotoImage(file="dice 5.png")
-dice6 = ImageTk.PhotoImage(file="dice 6.png")
+dice1 = ImageTk.PhotoImage(file="lessons/dice 1.png")
+dice2 = ImageTk.PhotoImage(file="lessons/dice 2.png")
+dice3 = ImageTk.PhotoImage(file="lessons/dice 3.png")
+dice4 = ImageTk.PhotoImage(file="lessons/dice 4.png")
+dice5 = ImageTk.PhotoImage(file="lessons/dice 5.png")
+dice6 = ImageTk.PhotoImage(file="lessons/dice 6.png")
 
 Button(window, text="CLICK HERE TO ROLL", command=lambda: onclick("button")).pack(side="left")
 
