@@ -8,18 +8,19 @@ at the comments and the code snippets in the previous lessons, like
 
 
 """
+from tkinter import messagebox, simpledialog, Tk # import required modules
 
-# Import the required modules
+window = Tk()     # Create a window object
+window.withdraw() # Hide the window; we just want to see pop ups
 
-# Create a window object
 
-# Hide the window, hint: use the withdraw method
+
 
 # Ask the user for the first number   
-
+e = simpledialog.askfloat('Simple Adder', "Add your first number.")
 # Ask the user for the second number
-
+f = simpledialog.askfloat('Simple Adder', "Add your second number.")
 # Display the sum of the two numbers 
-
+messagebox.showinfo(e + f)
 # Keep the window open
 
