@@ -21,6 +21,6 @@ e = simpledialog.askfloat('Simple Adder', "Add your first number.")
 # Ask the user for the second number
 f = simpledialog.askfloat('Simple Adder', "Add your second number.")
 # Display the sum of the two numbers 
-messagebox.showinfo(e + f)
+messagebox.showinfo('Simple Adder', e + f)
 # Keep the window open
 
