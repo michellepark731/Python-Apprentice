@@ -31,8 +31,16 @@ from guizero import App, Box, Text
 
 app = App("Numbers Grid", layout="grid")
 
-# Create a 10x10 grid using nested loops
+# Create a 10x10 grid using nested for 
+for i in range(1, 101, 10):
+    for j in range(1):
+        num = i
+        text_display = Text(app, text=str(num), grid=[i, j])
+        print(f"{j:3}", end= ' ')
+    print()
 # Or you can use a single loop and calculate the row and column
+if num % 3 == 0:
+    Text(app, text='🍄', grid=[1, 1])
 
 # In the loop, calculate or increment the number
 
