@@ -16,8 +16,12 @@ Your program should print 4 badgers.
 
 """
 
+for i in range(1, 101, 10):
+    for j in range(i, i +10):
+        print(f"{j:3}", end= ' ')
+    print()
 
-for i in [5, 10, 20, 25]: # Change only this line
+for i in []: # Change only this line
 
     # Don't change anything below this line
     if i % 15 == 0:

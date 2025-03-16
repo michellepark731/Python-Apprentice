@@ -31,7 +31,7 @@ at the bottom of the editor screen; this program does not use the GUI.
 """
 
 import random
-
+n = random.randint(1, 100)
 def ask_integer(prompt):
     """Function to ask the user for an integer"""
     while True:
