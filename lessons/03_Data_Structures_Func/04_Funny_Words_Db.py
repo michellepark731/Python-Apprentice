@@ -40,9 +40,12 @@ def add_definition(db, key, value):
     """
 
     # Check the limit
+    if len(db) >= 5:
+        app.error("Error", "You have reached your limit of words")
 
     # Set the item in the database
-
+    else:
+        _add_definition()
     pass
 
 
@@ -59,7 +62,8 @@ def delete_definition(db, key):
     """
 
     # Delete the item from db if it is present
-
+    if key in db.keys():
+        _delete_definition()
     pass
 
 
@@ -75,14 +79,15 @@ def is_funny(definition):
     Returns:
         bool: True if the definition contains any of the funny words, False otherwise.
     """
-    
-    # Return True if the definition contains any of the funny words, False otherwise
-
-    return False
+    f = "fun, funny, hilarious, amusing, pants, spleen"
+    if f in definition:
+        return True
+    else:
+        return False
 
 def update_listbox(db):
     """
-    Update the listbox with the current definitions in the database.1
+    Update the listbox with the current definitions in the database.
 
     Returns:
         list of str: A list of strings containing the definitions to be displayed in the listbox.
@@ -95,12 +100,15 @@ def update_listbox(db):
         "Item 2: Fake Definition 2",
         "Item 3: fake Definition 3"
     ]
+    words = []
+    for index, (key, value) in enumerate(db.items()):
+        words.append(f"#{index} {key} = {value}")
 
     # Add each definition to a string
     # iterate over the dict's key-value pairs and turn them into
     # strings, then add the strings to the list with .append()
 
-    return l
+    return words
 
 ################################################################
 
