@@ -45,7 +45,7 @@ def add_definition(db, key, value):
 
     # Set the item in the database
     else:
-        _add_definition()
+        db.update({key: value})
     pass
 
 
@@ -62,8 +62,11 @@ def delete_definition(db, key):
     """
 
     # Delete the item from db if it is present
+    
     if key in db.keys():
-        _delete_definition()
+        del db[key]
+        
+        # _update_listbox(db)
     pass
 
 
@@ -79,11 +82,11 @@ def is_funny(definition):
     Returns:
         bool: True if the definition contains any of the funny words, False otherwise.
     """
-    f = "fun, funny, hilarious, amusing, pants, spleen"
-    if f in definition:
-        return True
-    else:
-        return False
+    f = {"fun", "funny", "hilarious", "amusing", "pants", "spleen"}
+    for x in f:
+        if x in definition:
+            return True
+    return False
 
 def update_listbox(db):
     """
@@ -102,7 +105,7 @@ def update_listbox(db):
     ]
     words = []
     for index, (key, value) in enumerate(db.items()):
-        words.append(f"#{index} {key} = {value}")
+        words.append(f"{key}: {value}")
 
     # Add each definition to a string
     # iterate over the dict's key-value pairs and turn them into
