@@ -11,12 +11,12 @@ def check_row(l):
     """Check if a player won on a row
     Args:
         l: a 3 element iterable
-        
-    Returns:
-        The winner's token ( x or o ) if there is one, otherwise None
         """
-
+    if (len(set(l))) == 1:
+        return l[0]
     return None
+
+
 
 def check_win(board):
     """Check if a player has won on a board
@@ -27,7 +27,20 @@ def check_win(board):
         The winner's token ( x or o ) if there is one, otherwise None
     """
 
+
+    w = board[:]
+    w.extend(list(zip(*board)))
+    d1 = [ board[i][i] for i in range(3) ]
+    d2 = [ board[i][2-i] for i in range(3) ]
+    w.append(d1)
+    w.append(d2)
+    winner_token = ""
+    for x in w:
+        winner_token = check_row(x)
+        if winner_token != None:
+            return winner_token
     return None
+ 
 
 # The following code is the main part of the program. It creates a GUI for the
 # game and handles the game logic. Implement the functions above first, then
