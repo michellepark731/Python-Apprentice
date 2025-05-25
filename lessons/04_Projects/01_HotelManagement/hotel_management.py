@@ -59,40 +59,46 @@ guestroom = {
 }
               
 
-def check_in():
+def check_in(room_numbers, name, guestcost, guestroom):
     
-    print("There are " + len(room_numbers) + " rooms in the hotel.")
+    print("There are " + str(len(room_numbers)) + " rooms in the hotel.")
     e = input("Do you want to make a reservation?(y/n)")
     if e == "y":
-            check_room_availability()
+        c = check_room_availability(room_numbers, guestroom, name)
             
     n = input("How many nights will you be staying?")
-    cost = n * 10
-    input("Your reservation will cost" + cost + " in total. Do you confirm your agreement of this price?(y/n)")
-    if input == "y":
-        guestcost[name] = guestcost[name] + cost
+    cost = int(n) * 10
+    r = input("Your reservation will cost " + str(cost) + " in total. Do you confirm your agreement of this price?(y/n)")
+    if r == "y":
+        guestcost[name] = cost
         r = input("Great! Would you like room service throughout your stay? (y/n)")
         if r == "y":
-              room_service(name)
+              room_service(guestcost, name)
               if r == "n":
                     print("Thank you for staying at Mocha Hotels!")
+    return c
 
 
          
-def check_room_availability():
-    c = input("Which room would you like to stay in? We have rooms" + ['101', '102', '103', '104', '105'])
+def check_room_availability(room_numbers, guestroom, name):
+    c = input("Which room would you like to stay in? We have rooms" + str(['101', '102', '103', '104', '105']))
+    if room_numbers[c]==False:
+        print("Sorry, this room is currently occupied.")
+        check_room_availability(room_numbers, guestroom, name)
     if room_numbers[c]==True:
         print("The room is available!")
         guestroom[name] = c
         room_numbers[c] = False
-        if room_numbers[c]==False:
-            print("Sorry, this room is currently occupied.")
-            check_room_availability()
+    return c
 
-def room_service(name):
-            guestcost[name] = guestcost[name] + 15
 
-def check_out():
+def room_service(guestcost, name):
+    guestcost[name] = guestcost[name] + 15
+    t = input("Your price will now be " + str(guestcost[name]) + ". Do you confirm this?(y/n)")
+    print("Thank you for choosing us. Enjoy your stay!")
+
+
+def check_out(guestroom, name, room_numbers, c):
      del guestroom[name]
      room_numbers[c] = True
      print("Thank you for staying at Mocha Hotels. Enjoy the rest of your day!")
@@ -101,7 +107,8 @@ while True:
     name = input("Hello! Please enter your name.")
     trigger = input("Do you want to check in or out? (Check in/Check out)")
     if trigger == "Check in":
-        check_in()
-        if trigger == "Check out":
-             check_out()
-             break
+        c = check_in(room_numbers, name, guestcost, guestroom)
+    if trigger == "Check out":
+            check_out(guestroom, name, room_numbers, c)
+            print("Thank you for staying with us!")
+            break
